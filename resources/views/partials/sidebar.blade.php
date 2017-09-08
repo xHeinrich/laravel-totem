@@ -1,16 +1,11 @@
-<aside class="uk-width-1-6@l uk-margin-bottom">
-    <div class="uk-text-center">
-        <img src="{{asset('vendor/totem/img/mask.svg')}}" class="uk-svg">
-        <div class="uk-text-large">Totem</div>
+<temporary-drawer ref="drawer" style="z-index: 20;">
+    <div slot="header" class="mdc-temporary-drawer__header-content">
+        <img src="{{asset('vendor/totem/img/mask.svg')}}">
+        <div class="">Totem</div>
     </div>
-    <hr>
-    <ul class="uk-nav uk-nav-default">
-        <li class="{{ str_contains(url()->current(), 'tasks') ? 'uk-active' : '' }}">
-            <a href="{{route('totem.tasks.all')}}" class="uk-flex uk-flex-middle">
-                <icon name="clock" :scale="100" class="uk-visible@m uk-margin-small-right uk-icon"></icon>
-                <span class="uk-vertical-align-middle">Tasks</span>
-            </a>
-        </li>
-    </ul>
-    <hr>
-</aside>
+    <nav id="icon-with-text-demo" class="mdc-temporary-drawer__content mdc-list">
+        <a class="mdc-list-item {{ str_contains(url()->current(), 'tasks') ? 'mdc-temporary-drawer--selected' : '' }}" href="{{route('totem.tasks.all')}}">
+            <i class="material-icons mdc-list-item__start-detail" aria-hidden="true">inbox</i>Tasks
+        </a>
+    </nav>
+</temporary-drawer>
