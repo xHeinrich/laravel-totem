@@ -20,12 +20,10 @@
 </template>
 <script>
     import UIKitModal from '../../components/UIKitModal.vue'
-    import Icon from '../../components/Icon.vue'
     export default {
         name: 'TaskOutput',
         components: {
             'uikit-modal':UIKitModal,
-            'icon'  : Icon
         },
         props: {
             output: {

@@ -1,6 +1,5 @@
 <script>
     import UIKitModal from '../../components/UIKitModal.vue'
-    import Icon from '../../components/Icon.vue'
     export default {
         components: {
             'uikit-modal':UIKitModal,

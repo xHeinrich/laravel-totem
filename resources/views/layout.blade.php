@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="mdc-typography">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,15 +12,18 @@
             Totem
             @yield('page-title')
         </title>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,700" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ asset('/vendor/totem/css/app.css') }}">
         @stack('style')
     </head>
     <body>
         <main id="root">
-            <div class="uk-container uk-section">
-                <div class="uk-grid">
-                    @include('totem::partials.sidebar')
-                    <section class="uk-width-5-6@l">
+            <div class="mdc-layout-grid max-width-4 mx-auto">
+                <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2">
+                        @include('totem::partials.sidebar')
+                    </div>
+                    <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-10">
                         @include('totem::partials.alerts')
                         @yield('main-panel-before')
                         <div class="uk-card uk-card-default">
@@ -39,7 +42,8 @@
                         <div class="uk-margin-top">
                             @include('totem::partials.footer')
                         </div>
-                    </section>
+                    </div>
+                    <div class="mdc-layout-grid__cell"></div>
                 </div>
             </div>
         </main>

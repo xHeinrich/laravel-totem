@@ -1,12 +1,11 @@
 import './bootstrap'
 import Vue from 'vue'
 import moment from 'moment'
-import Icon from './components/Icon.vue';
-import UIKitAlert from './components/UiKitAlert.vue'
-import TaskType from './tasks/components/TaskType.vue'
-import TaskOutput from './tasks/components/TaskOutput.vue'
-import StatusButton from './tasks/components/StatusButton.vue'
-import ExecuteButton from './tasks/components/ExecuteButton.vue'
+// import UIKitAlert from './components/UiKitAlert.vue'
+// import TaskType from './tasks/components/TaskType.vue'
+// import TaskOutput from './tasks/components/TaskOutput.vue'
+// import StatusButton from './tasks/components/StatusButton.vue'
+// import ExecuteButton from './tasks/components/ExecuteButton.vue'
 
 Promise.delay = function (time) {
     return new Promise((resolve, reject) => {
@@ -43,11 +42,10 @@ Vue.mixin({
 new Vue({
     el: '#root',
     components: {
-        'icon'  : Icon,
-        'uikit-alert'  : UIKitAlert,
-        'status-button': StatusButton,
-        'execute-button': ExecuteButton,
-        'task-type' : TaskType,
-        'task-output' : TaskOutput
+        // 'uikit-alert'  : UIKitAlert,
+        // 'status-button': StatusButton,
+        // 'execute-button': ExecuteButton,
+        // 'task-type' : TaskType,
+        // 'task-output' : TaskOutput
     }
 })
