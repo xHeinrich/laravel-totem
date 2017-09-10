@@ -8,9 +8,7 @@
         {{csrf_field()}}
 @stop
 @section('title')
-    <div class="uk-flex uk-flex-between uk-flex-middle">
-        <h5 class="uk-card-title uk-margin-remove">{{ $task->exists ? 'Update' : 'Create'}} Task</h5>
-    </div>
+    {{ $task->exists ? 'Update' : 'Create'}} Task
 @stop
 @section('main-panel-content')
     <div class="uk-grid">

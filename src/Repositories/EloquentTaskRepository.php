@@ -71,6 +71,20 @@ class EloquentTaskRepository implements TaskInterface
     }
 
     /**
+     * Find all active tasks.
+     *
+     * @return mixed
+     */
+    public function findAllInActive()
+    {
+        return Cache::rememberForever('totem.tasks.inactive', function () {
+            return $this->findAll()->filter(function ($task) {
+                return ! $task->is_active;
+            });
+        });
+    }
+
+    /**
      * Create a new task.
      *
      * @param array $input

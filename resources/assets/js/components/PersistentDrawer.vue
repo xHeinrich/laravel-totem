@@ -1,12 +1,12 @@
 <template>
-    <aside class="mdc-temporary-drawer mdc-typography" :class="classes">
-        <nav ref="drawer" class="mdc-temporary-drawer__drawer">
+    <aside class="mdc-persistent-drawer mdc-typography" :class="classes">
+        <nav ref="drawer" class="mdc-persistent-drawer__drawer">
 
-            <div class="mdc-temporary-drawer__toolbar-spacer" v-if="$slots['toolbar-spacer'] || toolbarSpacer">
+            <div class="mdc-persistent-drawer__toolbar-spacer" v-if="$slots['toolbar-spacer'] || toolbarSpacer">
                 <slot name="toolbar-spacer"></slot>
             </div>
 
-            <header class="mdc-temporary-drawer__header" v-if="$slots.header">
+            <header class="mdc-persistent-drawer__header" v-if="$slots.header">
                 <slot name="header"></slot>
             </header>
 
@@ -16,8 +16,8 @@
 
 </template>
 
-<script lang="babel">
-    import {MDCTemporaryDrawerFoundation} from '@material/drawer';
+<script>
+    import {MDCPersistentDrawerFoundation} from '@material/drawer';
     import * as utils from '@material/drawer/util';
 
     export default {
@@ -30,10 +30,10 @@
             };
         },
         mounted() {
-            const {FOCUSABLE_ELEMENTS, OPACITY_VAR_NAME} = MDCTemporaryDrawerFoundation.strings;
+            const {FOCUSABLE_ELEMENTS, OPACITY_VAR_NAME} = MDCPersistentDrawerFoundation.strings;
 
             let vm = this;
-            this.foundation = new MDCTemporaryDrawerFoundation({
+            this.foundation = new MDCPersistentDrawerFoundation({
                 addClass(className) {
                     vm.$set(vm.classes, className, true);
                 },

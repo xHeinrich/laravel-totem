@@ -32,6 +32,12 @@ interface TaskInterface
     public function findAllActive();
 
     /**
+     * Returns all inactive tasks.
+     * @return \Illuminate\Database\Eloquent\Collection
+     */
+    public function findAllInActive();
+
+    /**
      * Creates a new task with the given data.
      *
      * @param  array $input

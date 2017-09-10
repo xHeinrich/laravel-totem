@@ -1,77 +1,149 @@
 @extends('totem::layout')
+@push('style')
+    <style>
+        .mdc-list-item__text a {
+            text-decoration: none;
+        }
+        .mdc-list-group {
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+    </style>
+@endpush
 @section('page-title')
     @parent
     - Task
 @stop
 @section('title')
-    <div class="uk-flex uk-flex-between uk-flex-middle">
-        <h5 class="uk-card-title uk-margin-remove">Task Details</h5>
-        <status-button :data-task="{{ $task }}" :data-exists="{{ $task->exists ? 'true' : 'false' }}" activate-url="{{route('totem.task.activate')}}" deactivate-url="{{route('totem.task.deactivate', $task)}}"></status-button>
-    </div>
+    Task Details
 @stop
-@section('main-panel-content')
-    <ul class="uk-list uk-list-striped">
-        <li>
-            <span class="uk-text-muted uk-float-right">Description</span>
-            <span class="uk-float-left">{{str_limit($task->description, 80)}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Command</span>
-            <span class="uk-float-left">{{$task->command}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Parameters</span>
-            <span class="uk-float-left">{{$task->parameters or 'N/A'}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Cron Expression</span>
-            <span class="uk-float-left">
-                <span>{{$task->getCronExpression()}}</span>
-            </span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Timezone</span>
-            <span class="uk-float-left">{{$task->timezone}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Created At</span>
-            <span class="uk-float-left">{{$task->created_at->toDateTimeString()}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Updated At</span>
-            <span class="uk-float-left">{{$task->updated_at->toDateTimeString()}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Email Notification</span>
-            <span class="uk-float-left">{{$task->notification_email_address or 'N/A'}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">SMS Notification</span>
-            <span class="uk-float-left">{{$task->notification_phone_number or 'N/A'}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Slack Notification</span>
-            <span class="uk-float-left">{{$task->notification_slack_webhook or 'N/A'}}</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Average Run Time</span>
-            <span class="uk-float-left">{{$task->results->count() > 0 ? number_format(  $task->results->sum('duration') / (1000 * $task->results->count()) , 2) : '0'}} seconds</span>
-        </li>
-        <li>
-            <span class="uk-text-muted uk-float-right">Next Run Schedule</span>
-            <span class="uk-float-left">{{$task->upcoming }}</span>
-        </li>
-        @if($task->dont_overlap)
-            <li>
-                <span class="uk-float-left">Doesn't Overlap with another instance of this task</span>
+@section('content')
+    <div class="mdc-list-group mdc-elevation--z1">
+        <h3 class="mdc-list-group__subheader">Task Details</h3>
+        <ul class="task-list mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{str_limit($task->description, 30)}}
+                    <span class="mdc-list-item__text__secondary">
+                        Description
+                    </span>
+                </span>
             </li>
-        @endif
-        @if($task->run_in_maintenance)
-            <li>
-                <span class="uk-float-left">Runs in maintenance mode</span>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->command}}
+                    <span class="mdc-list-item__text__secondary">
+                        Command
+                    </span>
+                </span>
             </li>
-        @endif
-    </ul>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->parameters or 'No parameters'}}
+                    <span class="mdc-list-item__text__secondary">
+                        Parameters
+                    </span>
+                </span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->getCronExpression()}}
+                    <span class="mdc-list-item__text__secondary">
+                        Cron Expression
+                    </span>
+                </span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->timezone}}
+                    <span class="mdc-list-item__text__secondary">
+                        Timezone
+                    </span>
+                </span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->created_at->toDayDateTimeString()}}
+                    <span class="mdc-list-item__text__secondary">
+                        Created At
+                    </span>
+                </span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->updated_at->toDayDateTimeString()}}
+                    <span class="mdc-list-item__text__secondary">
+                        Updated At
+                    </span>
+                </span>
+            </li>
+        </ul>
+        <hr class="mdc-list-divider">
+        <h3 class="mdc-list-group__subheader">Statistics</h3>
+        <ul class="task-list mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->results->count() > 0 ? number_format(  $task->results->sum('duration') / (1000 * $task->results->count()) , 2) : '0'}} seconds
+                    <span class="mdc-list-item__text__secondary">
+                        Average Run Time
+                    </span>
+                </span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->upcoming }}
+                    <span class="mdc-list-item__text__secondary">
+                        Next Run Schedule
+                    </span>
+                </span>
+            </li>
+        </ul>
+        <hr class="mdc-list-divider">
+        <h3 class="mdc-list-group__subheader">Notifications</h3>
+        <ul class="task-list mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->notification_email_address or 'Do not send email notifications'}}
+                    <span class="mdc-list-item__text__secondary">
+                        Email Notification
+                    </span>
+                </span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->notification_phone_number or 'Do not send sms notifications'}}
+                    <span class="mdc-list-item__text__secondary">
+                        SMS Notification
+                    </span>
+                </span>
+            </li>
+            <li class="mdc-list-item">
+                <span class="mdc-list-item__text">
+                    {{$task->notification_slack_webhook or 'Do not send slack notifications'}}
+                    <span class="mdc-list-item__text__secondary">
+                        Slack Notifications
+                    </span>
+                </span>
+            </li>
+        </ul>
+        <hr class="mdc-list-divider">
+        <h3 class="mdc-list-group__subheader">Miscellaneous</h3>
+        <ul class="task-list mdc-list mdc-list--dense">
+            <li class="mdc-list-item">
+                @if($task->dont_overlap)
+                    Doesn't Overlap with another instance of this task
+                @else
+                    Overlaps with another instance of this task
+                @endif
+            </li>
+            <li class="mdc-list-item">
+                @if($task->run_in_maintenance)
+                    Runs in maintenance mode
+                @else
+                    Doesn't run in maintenance mode
+                @endif
+            </li>
+        </ul>
+    </div>
 @stop
 @section('main-panel-footer')
     <div class="uk-flex uk-flex-between uk-flex-middle">

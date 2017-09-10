@@ -17,9 +17,7 @@
     "lodash": "^4.16.2",
     "material-components-web": "^0.20.0",
     "moment": "^2.18.1",
-    "vue": "^2.2.0"
-  },
-  "dependencies": {
+    "vue": "^2.2.0",
     "basscss": "^8.0.3"
   }
 }

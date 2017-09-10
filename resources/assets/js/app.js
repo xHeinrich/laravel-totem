@@ -1,8 +1,9 @@
 import './bootstrap'
 import Vue from 'vue'
 import moment from 'moment'
-import {MDCTemporaryDrawer, MDCTemporaryDrawerFoundation, util} from 'material-components-web'
-// import TemporaryDrawer from './components/TemporaryDrawer.vue'
+import Toolbar from './components/Toolbar.vue'
+import TemporaryDrawer from './components/TemporaryDrawer.vue'
+import PersistentDrawer from './components/PersistentDrawer.vue'
 // import UIKitAlert from './components/UiKitAlert.vue'
 // import TaskType from './tasks/components/TaskType.vue'
 // import TaskOutput from './tasks/components/TaskOutput.vue'
@@ -42,9 +43,11 @@ Vue.mixin({
 })
 
 new Vue({
-    el: '#root',
+    el: '#app',
     components: {
-        'temporary-drawer' : TemporaryDrawer
+        'toolbar' : Toolbar,
+        'temporary-drawer' : TemporaryDrawer,
+        'persistent-drawer' : PersistentDrawer
         // 'uikit-alert'  : UIKitAlert,
         // 'status-button': StatusButton,
         // 'execute-button': ExecuteButton,

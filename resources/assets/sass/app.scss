@@ -1,10 +1,17 @@
+@import url(http://fonts.googleapis.com/css?family=Material+Icons);
+@import url(http://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,700);
+
 $mdc-theme-primary: #8C6ED3;
 $mdc-theme-primary-light: #D4CAEB;
 $mdc-theme-primary-dark: #AC93E7;
+
 $mdc-theme-secondary: #405263;
 $mdc-theme-secondary-light: #62717E;
 $mdc-theme-secondary-dark: #292B2C;
+
 $mdc-theme-background: #EBEBEB;
+
 $mdc-typography-font-family: "Montserrat", sans-serif !default;
+
 @import "~basscss/css/basscss";
 @import "~material-components-web/material-components-web";

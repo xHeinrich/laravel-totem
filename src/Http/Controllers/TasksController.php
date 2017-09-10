@@ -35,7 +35,8 @@ class TasksController extends Controller
     public function index()
     {
         return view('totem::tasks.index', [
-            'tasks' => $this->tasks->builder()->paginate(10),
+            'active'    => $this->tasks->findAllActive(),
+            'inactive'  => $this->tasks->findAllInActive(),
         ]);
     }
 
