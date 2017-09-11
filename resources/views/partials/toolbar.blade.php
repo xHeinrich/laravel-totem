@@ -8,6 +8,7 @@
         </span>
     </section>
     <section class="mdc-toolbar__section mdc-toolbar__section--align-end" slot="right">
-        <a href="{{route('totem.task.create')}}" class="material-icons mdc-toolbar__icon">add</a>
+        @section('toolbar-icons')
+        @show
     </section>
 </toolbar>

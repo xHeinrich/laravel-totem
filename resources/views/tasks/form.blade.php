@@ -3,14 +3,38 @@
     @parent
     - {{ $task->exists ? 'Update' : 'Create'}} Task
 @stop
-@section('main-panel-before')
-    <form action="{{ request()->fullUrl() }}" method="POST">
-        {{csrf_field()}}
-@stop
+
 @section('title')
     {{ $task->exists ? 'Update' : 'Create'}} Task
 @stop
-@section('main-panel-content')
+@section('toolbar-icons')
+    <a href="{{route('totem.tasks.all')}}" class="material-icons mdc-toolbar__icon">view_list</a>
+    <a href="{{route('totem.task.create')}}" class="material-icons mdc-toolbar__icon">add</a>
+    <a href="{{route('totem.task.view', $task)}}" class="material-icons mdc-toolbar__icon">folder_open</a>
+    <a href="{{route('totem.task.delete', $task)}}" class="material-icons mdc-toolbar__icon">delete</a>
+@stop
+@section('content')
+    <div class="mdc-card">
+        <form action="{{ request()->fullUrl() }}" method="POST">
+            {{csrf_field()}}
+            <section class="mdc-card__primary">
+                <div class="mdc-form-field">
+                    <div class="mdc-textfield">
+                        <input  class="mdc-textfield__input" placeholder="e.g. Daily Backups" name="description" id="description" value="{{old('description', $task->description)}}" type="text">
+                    </div>
+                    @if($errors->has('description'))
+                        <p class="mdc-textfield-helptext mdc-textfield-helptext--persistent mdc-textfield-helptext--validation-msg">
+                            {{$errors->first('description')}}
+                        </p>
+                    @endif
+                </div>
+            </section>
+            <section class="mdc-card__actions">
+                <button class="mdc-button mdc-button--compact mdc-card__action">Action 1</button>
+                <button class="mdc-button mdc-button--compact mdc-card__action">Action 2</button>
+            </section>
+        </form>
+    </div>
     <div class="uk-grid">
         <div class="uk-width-1-1@s uk-width-1-3@m">
             <label class="uk-form-label">Description</label>

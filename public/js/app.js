@@ -45315,7 +45315,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/roshangautam/Developer/code/web/laravel/vendor/studio/laravel-totem/resources/assets/js/components/Toolbar.vue"
+Component.options.__file = "/Users/rgautam/Developer/code/web/laravel/vendor/studio/laravel-totem/resources/assets/js/components/Toolbar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Toolbar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -45374,7 +45374,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/roshangautam/Developer/code/web/laravel/vendor/studio/laravel-totem/resources/assets/js/components/TemporaryDrawer.vue"
+Component.options.__file = "/Users/rgautam/Developer/code/web/laravel/vendor/studio/laravel-totem/resources/assets/js/components/TemporaryDrawer.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] TemporaryDrawer.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -46412,7 +46412,7 @@ var Component = __webpack_require__(5)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/Users/roshangautam/Developer/code/web/laravel/vendor/studio/laravel-totem/resources/assets/js/components/PersistentDrawer.vue"
+Component.options.__file = "/Users/rgautam/Developer/code/web/laravel/vendor/studio/laravel-totem/resources/assets/js/components/PersistentDrawer.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PersistentDrawer.vue: functional components are not supported with templates, they should use render functions.")}
 

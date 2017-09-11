@@ -25,6 +25,9 @@
 @section('title')
     Tasks
 @stop
+@section('toolbar-icons')
+    <a href="{{route('totem.task.create')}}" class="material-icons mdc-toolbar__icon">add</a>
+@stop
 @section('content')
     <div class="mdc-list-group mdc-elevation--z1">
         <h3 class="mdc-list-group__subheader">Active Tasks</h3>
@@ -45,29 +48,14 @@
                             @endif
                         </span>
                     </span>
-                    <a href="#" class="mdc-list-item__end-detail material-icons" aria-label="Execute Task" title="View task details">
-                        more_vert
+                    <a href="{{route('totem.task.execute', $task)}}" class="mdc-list-item__end-detail material-icons" aria-label="Execute Task" title="View task details">
+                        play_arrow
                     </a>
-                    <div class="mdc-simple-menu" tabindex="-1">
-                        <ul class="mdc-simple-menu__items mdc-list" role="menu" aria-hidden="true">
-                            <li class="mdc-list-item" role="menuitem" tabindex="0">
-                                <a href="{{route('totem.task.execute', $task)}}">Execute</a>
-                            </li>
-                            <li class="mdc-list-item" role="menuitem" tabindex="-1" aria-disabled="true">
-                                Disable
-                            </li>
-                        </ul>
-                    </div>
                 </li>
             @empty
-                <li class="mdc-list-item">
-                    <span class="mdc-list-item__start-detail">
-                        <img width="60" height="60" src="{{asset('/vendor/totem/img/funnel.svg')}}">
-                    </span>
-
-                    <span class="mdc-list-item__text">
-                        No active tasks
-                    </span>
+                <li class="center p1">
+                    <img width="60" height="60" src="{{asset('/vendor/totem/img/funnel.svg')}}">
+                    <p class="mdc-typography--caption">No inactive tasks</p>
                 </li>
             @endforelse
         </ul>
@@ -88,18 +76,13 @@
                         </span>
                     </span>
                     <a href="{{route('totem.task.execute', $task)}}" class="mdc-list-item__end-detail material-icons" aria-label="Execute Task" title="View task details">
-                        settings
+                        play_arrow
                     </a>
                 </li>
             @empty
-                <li class="mdc-list-item">
-                    <span class="mdc-list-item__start-detail">
-                        <img width="60" height="60" src="{{asset('/vendor/totem/img/funnel.svg')}}">
-                    </span>
-
-                    <span class="mdc-list-item__text">
-                        No inactive tasks
-                    </span>
+                <li class="center p1">
+                    <img width="60" height="60" src="{{asset('/vendor/totem/img/funnel.svg')}}">
+                    <p class="mdc-typography--caption">No inactive tasks</p>
                 </li>
             @endforelse
         </ul>

@@ -7,6 +7,11 @@
         .mdc-list-group {
             border: 1px solid rgba(0, 0, 0, 0.1);
         }
+        .mdc-list-item__start-detail {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
     </style>
 @endpush
 @section('page-title')
@@ -16,11 +21,17 @@
 @section('title')
     Task Details
 @stop
+@section('toolbar-icons')
+    <a href="{{route('totem.tasks.all')}}" class="material-icons mdc-toolbar__icon">view_list</a>
+    <a href="{{route('totem.task.create')}}" class="material-icons mdc-toolbar__icon">add</a>
+    <a href="{{route('totem.task.edit', $task)}}" class="material-icons mdc-toolbar__icon">edit</a>
+@stop
 @section('content')
     <div class="mdc-list-group mdc-elevation--z1">
         <h3 class="mdc-list-group__subheader">Task Details</h3>
-        <ul class="task-list mdc-list mdc-list--two-line mdc-list--avatar-list mdc-list--dense">
+        <ul class="task-list mdc-list mdc-list--two-line mdc-list--avatar-list">
             <li class="mdc-list-item">
+                <i class="mdc-list-item__start-detail material-icons" aria-hidden="true">subject</i>
                 <span class="mdc-list-item__text">
                     {{str_limit($task->description, 30)}}
                     <span class="mdc-list-item__text__secondary">
@@ -29,6 +40,7 @@
                 </span>
             </li>
             <li class="mdc-list-item">
+                <i class="mdc-list-item__start-detail material-icons" aria-hidden="true">settings</i>
                 <span class="mdc-list-item__text">
                     {{$task->command}}
                     <span class="mdc-list-item__text__secondary">
@@ -37,6 +49,7 @@
                 </span>
             </li>
             <li class="mdc-list-item">
+                <i class="mdc-list-item__start-detail material-icons" aria-hidden="true">more_horiz</i>
                 <span class="mdc-list-item__text">
                     {{$task->parameters or 'No parameters'}}
                     <span class="mdc-list-item__text__secondary">
@@ -45,6 +58,7 @@
                 </span>
             </li>
             <li class="mdc-list-item">
+                <i class="mdc-list-item__start-detail material-icons" aria-hidden="true">alarm_on</i>
                 <span class="mdc-list-item__text">
                     {{$task->getCronExpression()}}
                     <span class="mdc-list-item__text__secondary">
@@ -53,6 +67,7 @@
                 </span>
             </li>
             <li class="mdc-list-item">
+                <i class="mdc-list-item__start-detail material-icons" aria-hidden="true">schedule</i>
                 <span class="mdc-list-item__text">
                     {{$task->timezone}}
                     <span class="mdc-list-item__text__secondary">
