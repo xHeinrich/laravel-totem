@@ -15,8 +15,10 @@ require('laravel-elixir-vue-2');
 
 elixir(mix => {
   mix
-    .less('totem.less', 'public/css/app.css')
+    .less('app.less', 'public/css/app.css')
+    .less('style.less', 'public/css/style.css')
     .webpack('app.js')
+    .copy('resources/assets/fonts', 'public/fonts')
     .copy('resources/assets/img', 'public/img')
     .copy('resources/assets/less/img', 'public/img')
     .copy('public', '../../../public/vendor/totem');

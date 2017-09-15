@@ -13,14 +13,18 @@
             @yield('page-title')
         </title>
         <link rel="stylesheet" type="text/css" href="{{ asset('/vendor/totem/css/app.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('/vendor/totem/css/style.css') }}">
         @stack('style')
     </head>
     <body>
-        <main id="root">
-            <div class="uk-container uk-section">
-                <div class="uk-grid">
-                    @include('totem::partials.sidebar')
-                    <section class="uk-width-5-6@l">
+        <div id="app">
+            <div id="wrapper" class="toggled">
+                @include('totem::partials.sidebar')
+                <!-- Page Content -->
+                <div id="page-content-wrapper">
+                    <a href="" class="tm-mobile-menu-toggle" uk-icon="icon: menu" uk-toggle="target: #wrapper; cls: toggled"></a>
+
+                    <div class="uk-container uk-container-medium" id="content">
                         @include('totem::partials.alerts')
                         @yield('main-panel-before')
                         <div class="uk-card uk-card-default">
@@ -36,13 +40,11 @@
                         </div>
                         @yield('main-panel-after')
                         @yield('additional-panels')
-                        <div class="uk-margin-top">
-                            @include('totem::partials.footer')
-                        </div>
-                    </section>
+                    </div>
                 </div>
+                <!-- /#page-content-wrapper -->
             </div>
-        </main>
+        </div>
         <script src="{{ asset('/vendor/totem/js/app.js') }}"></script>
         @stack('scripts')
     </body>

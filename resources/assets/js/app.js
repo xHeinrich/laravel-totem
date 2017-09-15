@@ -41,7 +41,7 @@ Vue.mixin({
 })
 
 new Vue({
-    el: '#root',
+    el: '#app',
     components: {
         'icon'  : Icon,
         'uikit-alert'  : UIKitAlert,
